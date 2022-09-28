@@ -1,0 +1,106 @@
+<meta charset="UTF-8">
+<meta lang="es">
+<head>
+
+<title>interes compuesto </title>  
+
+</head>
+
+<body style="margin-top: 20px ;">
+    <p> </p>
+    <h1 style="font-size:30px; text-align: left; margin-left: 0px;"> Capitalizar "X" a una tasa mensual "Y" en "Z" meses</h1> 
+    <p> </p>
+<div>
+<label>Ingrese Tasa mensual sin %</label>  
+<input  style="margin-bottom: 10px; margin-left: 10px; border-radius: 4px;" placeholder="tasa mensual (sin %)" id="tas">
+</div>
+
+
+<div>
+    <label>Ingrese cantidad de meses</label>   
+<input  style="margin-bottom: 10px; margin-left: 20px; border-radius: 4px;" placeholder="cantidad de meses" id="meses">
+</div>
+
+
+<div>
+    <label style="margin-right: 69px;">Monto a depositar</label>   
+<input style="margin-bottom: 10px; margin-left: 10px;border-radius: 4px;" placeholder="ingrese capital"  id="ed"/>
+</div>
+
+<div>
+<button id="ed" style="text-align: center; margin-left: 230px;margin-top: 8px; width: 160px;  border-color: black ;">Calcular </button>
+</div>
+<div>
+<script>
+        
+        function saltarLinea(){
+            document.write("<br>");
+            
+
+        }
+        function imprimir(frase){
+            document.write(frase);
+            saltarLinea();
+        }
+        
+        var capital=document.getElementById("ed");
+        var meses=document.getElementById("meses");
+        var interes = document.getElementById("tas");
+        interes.focus();
+        var mes=[1,2,3,4,5,6,7,8,9,10,11,12];
+        var periodos=1;
+        var x=1; // posicion de la lista
+        var a=1; //Loop de la cadena mes
+        var y=2; // indicador del año
+        document.write("<br>");
+        document.write("<br>");
+
+        function capitalizar(){ 
+         
+          
+         while(periodos<=meses.value) {  // 
+            
+          
+         imprimir("mes "+mes[periodos-x] +" : "+ Math.round(capital.value*(1+(interes.value/100))**periodos));
+         
+          periodos ++;
+          if(periodos===(mes.length+a)){ //EQUIVALE A 13
+            x=periodos;        //IDEM ARRIBA
+            document.write("<br>");
+            imprimir("año : " + y);
+            document.write("<br>");
+            a+=12; y++;
+          }
+          
+         }
+         document.write("<br>");
+         imprimir("Capital inicial : " + capital.value);
+         
+
+        imprimir("intereses acumulados: "+ (Math.round(capital.value*(1+(interes.value/100))**(periodos-1))-capital.value));
+
+        document.write("<br>");
+
+    }
+     var boton=document.querySelector("button");
+         boton.onclick=capitalizar;
+         
+
+        
+     // anexo funcion capitalizar2 hecha con for no utilizada
+
+     function capitalizar2() { 
+        for(periodos=1; periodos<=12; periodos++) {
+
+            imprimir("mes "+mes[periodos-1] +" : "+ Math.round(capital.value*(1+(interes.value/100))**periodos));
+
+        }
+
+    }
+        
+        
+
+</script>
+</div>
+
+</body>
